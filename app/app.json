@@ -1,0 +1,33 @@
+{
+  "id": "aa1d3c76-b50e-44e4-8535-450667588403",
+  "name": "E-Invoice Viewer",
+  "publisher": "BEYONDIT GmbH",
+  "version": "1.0.0.0",
+  "brief": "E-Invoice Viewer",
+  "description": "An application to view electronic invoices (e-invoices) in various formats such as ZUGFeRD, XRechnung, Factur-X, and others directly within Microsoft Dynamics 365 Business Central.",
+  "privacyStatement": "https://beyondit.gmbh/en/privacy-policy/",
+  "EULA": "https://beyondit.gmbh/en/eula/",
+  "help": "https://beyondit.gmbh/en/help/",
+  "url": "https://beyondit.gmbh/",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "23.0.0.0",
+  "application": "23.0.0.0",
+  "idRanges": [
+    {
+      "from": 50600,
+      "to": 50699
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith",
+    "TranslationFile"
+  ],
+  "target": "Cloud"
+}
