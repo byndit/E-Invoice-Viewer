@@ -35,6 +35,8 @@ def parse_invoice(xml_file):
     note = note.text if note is not None else 'N/A'
 
     invoice_type_code = root.find('.//cbc:InvoiceTypeCode', ns)
+    if invoice_type_code is None:
+        invoice_type_code = root.find('.//cbc:CreditNoteTypeCode', ns)  # For credit notes
     invoice_type_code = invoice_type_code.text if invoice_type_code is not None else 'N/A'
 
     # Extract supplier information
@@ -122,13 +124,17 @@ def parse_invoice(xml_file):
     total_amount = root.find('.//cac:LegalMonetaryTotal/cbc:PayableAmount', ns)
     total_amount = total_amount.text if total_amount is not None else '0.00'
 
-    # Extract invoice lines
+    # Extract invoice lines - try InvoiceLine first, then CreditNoteLine for credit notes
     lines = []
-    for line in root.findall('.//cac:InvoiceLine', ns):
+    invoice_lines = root.findall('.//cac:InvoiceLine', ns) or root.findall('.//cac:CreditNoteLine', ns)
+
+    for line in invoice_lines:
         line_id = line.find('cbc:ID', ns)
         line_id = line_id.text if line_id is not None else ''
 
         quantity = line.find('cbc:InvoicedQuantity', ns)
+        if quantity is None:
+            quantity = line.find('cbc:CreditedQuantity', ns)  # For credit notes
         quantity = quantity.text if quantity is not None else '0'
 
         amount = line.find('cbc:LineExtensionAmount', ns)

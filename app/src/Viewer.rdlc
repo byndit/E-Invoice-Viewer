@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-10-24T20:20:45.8807859Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-10-24T21:24:25.2453396Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -225,7 +225,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Header_Sell_to_Name.Value</Value>
+                                      <Value>=Fields!Header_Sell_to_Address.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -253,7 +253,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Header_Bill_to_Name.Value + " - " + Fields!Header_Bill_to_Address.Value + " - " + Fields!Header_Bill_to_Post_Code.Value + " - " + Fields!Header_Bill_to_City.Value</Value>
+                                      <Value>=Fields!Header_Bill_to_Name.Value + " - " +
+                                        Fields!Header_Bill_to_Address.Value + " - " +
+                                        Fields!Header_Bill_to_Post_Code.Value + " - " +
+                                        Fields!Header_Bill_to_City.Value</Value>
                                       <Style>
                                         <FontSize>6pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
@@ -458,34 +461,6 @@
                                 </Border>
                               </Style>
                             </Textbox>
-                            <Textbox Name="CustomerAddress2">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!Header_Sell_to_Address.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>CustomerAddress</rd:DefaultName>
-                              <Top>1.79996cm</Top>
-                              <Left>1.75cm</Left>
-                              <Height>0.5cm</Height>
-                              <Width>10cm</Width>
-                              <ZIndex>14</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Textbox>
                             <Textbox Name="CustomerAddress5">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
@@ -504,11 +479,11 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>CustomerAddress</rd:DefaultName>
-                              <Top>2.37146cm</Top>
+                              <Top>1.73646cm</Top>
                               <Left>1.75cm</Left>
                               <Height>0.5cm</Height>
                               <Width>10cm</Width>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -849,7 +824,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>=Fields!Line_AmountFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -881,7 +855,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>=Fields!Line_AmountFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -913,7 +886,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>=Fields!Line_AmountFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -945,7 +917,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>=Fields!Line_AmountFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -977,7 +948,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>=Fields!Line_AmountFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1171,7 +1141,7 @@
                               <Left>1.75cm</Left>
                               <Height>1.87938cm</Height>
                               <Width>19cm</Width>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>15</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1202,7 +1172,7 @@
                               <Left>14.11915cm</Left>
                               <Height>0.5cm</Height>
                               <Width>3.82176cm</Width>
-                              <ZIndex>17</ZIndex>
+                              <ZIndex>16</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1233,7 +1203,7 @@
                               <Left>14.11915cm</Left>
                               <Height>0.5cm</Height>
                               <Width>3.82176cm</Width>
-                              <ZIndex>18</ZIndex>
+                              <ZIndex>17</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1264,7 +1234,7 @@
                               <Left>14.11915cm</Left>
                               <Height>0.5cm</Height>
                               <Width>3.82176cm</Width>
-                              <ZIndex>19</ZIndex>
+                              <ZIndex>18</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1292,7 +1262,7 @@
                               <Left>1.75cm</Left>
                               <Height>0.5cm</Height>
                               <Width>11.66688cm</Width>
-                              <ZIndex>20</ZIndex>
+                              <ZIndex>19</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1320,7 +1290,7 @@
                               <Left>1.75cm</Left>
                               <Height>1.06646cm</Height>
                               <Width>11.66688cm</Width>
-                              <ZIndex>21</ZIndex>
+                              <ZIndex>20</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1334,7 +1304,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>IBAN:  </Value>
+                                      <Value>IBAN: </Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1354,7 +1324,7 @@
                               <Left>1.75cm</Left>
                               <Height>0.5cm</Height>
                               <Width>11.66688cm</Width>
-                              <ZIndex>22</ZIndex>
+                              <ZIndex>21</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1382,7 +1352,7 @@
                               <Left>11.82925cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35102cm</Width>
-                              <ZIndex>23</ZIndex>
+                              <ZIndex>22</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1410,7 +1380,7 @@
                               <Left>11.82396cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35631cm</Width>
-                              <ZIndex>24</ZIndex>
+                              <ZIndex>23</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1424,7 +1394,9 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Contact_Name.Value + Chr(10) + Fields!Contact_Phone.Value + Chr(10) + Fields!Contact_Email.Value</Value>
+                                      <Value>=Fields!Contact_Name.Value + Chr(10) +
+                                        Fields!Contact_Phone.Value + Chr(10) +
+                                        Fields!Contact_Email.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1438,7 +1410,7 @@
                               <Left>11.82925cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35102cm</Width>
-                              <ZIndex>25</ZIndex>
+                              <ZIndex>24</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1467,7 +1439,7 @@
                               <Left>11.82925cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35102cm</Width>
-                              <ZIndex>26</ZIndex>
+                              <ZIndex>25</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1496,7 +1468,7 @@
                               <Left>11.82925cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35102cm</Width>
-                              <ZIndex>27</ZIndex>
+                              <ZIndex>26</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1525,7 +1497,7 @@
                               <Left>11.82925cm</Left>
                               <Height>0.5cm</Height>
                               <Width>8.35102cm</Width>
-                              <ZIndex>28</ZIndex>
+                              <ZIndex>27</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1553,7 +1525,7 @@
                               <Left>11.82396cm</Left>
                               <Height>0.44003cm</Height>
                               <Width>4cm</Width>
-                              <ZIndex>29</ZIndex>
+                              <ZIndex>28</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1741,24 +1713,6 @@
       </DefaultValue>
       <Prompt>Line_NoCaption</Prompt>
     </ReportParameter>
-    <ReportParameter Name="TypeCaption">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>TypeCaption</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>TypeCaption</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="NoCaption">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>NoCaption</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>NoCaption</Prompt>
-    </ReportParameter>
     <ReportParameter Name="DescriptionCaption">
       <DataType>String</DataType>
       <DefaultValue>
@@ -1817,7 +1771,7 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>14</NumberOfRows>
+      <NumberOfRows>12</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1852,41 +1806,31 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>6</RowIndex>
-          <ParameterName>TypeCaption</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>7</RowIndex>
-          <ParameterName>NoCaption</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>8</RowIndex>
           <ParameterName>DescriptionCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>9</RowIndex>
+          <RowIndex>7</RowIndex>
           <ParameterName>QuantityCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>10</RowIndex>
+          <RowIndex>8</RowIndex>
           <ParameterName>Unit_PriceCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>11</RowIndex>
+          <RowIndex>9</RowIndex>
           <ParameterName>Line_AmountCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>12</RowIndex>
+          <RowIndex>10</RowIndex>
           <ParameterName>Line_Discount_AmountCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>13</RowIndex>
+          <RowIndex>11</RowIndex>
           <ParameterName>Line_Discount_PercentCaption</ParameterName>
         </CellDefinition>
       </CellDefinitions>
@@ -1974,9 +1918,6 @@
         <Field Name="Header_Bill_to_Post_Code">
           <DataField>Header_Bill_to_Post_Code</DataField>
         </Field>
-        <Field Name="Header_Bill_to_Customer_No">
-          <DataField>Header_Bill_to_Customer_No</DataField>
-        </Field>
         <Field Name="Header_Posting_Date_Value">
           <DataField>Header_Posting_Date_Value</DataField>
         </Field>
@@ -1998,26 +1939,14 @@
         <Field Name="Amount">
           <DataField>Amount</DataField>
         </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
         <Field Name="TaxAmount">
           <DataField>TaxAmount</DataField>
-        </Field>
-        <Field Name="TaxAmountFormat">
-          <DataField>TaxAmountFormat</DataField>
         </Field>
         <Field Name="Amount_Including_VAT">
           <DataField>Amount_Including_VAT</DataField>
         </Field>
-        <Field Name="Amount_Including_VATFormat">
-          <DataField>Amount_Including_VATFormat</DataField>
-        </Field>
         <Field Name="Amount_Excluding_VAT">
           <DataField>Amount_Excluding_VAT</DataField>
-        </Field>
-        <Field Name="Amount_Excluding_VATFormat">
-          <DataField>Amount_Excluding_VATFormat</DataField>
         </Field>
         <Field Name="Buyer_Reference">
           <DataField>Buyer_Reference</DataField>
@@ -2046,14 +1975,8 @@
         <Field Name="Line_Extension_Amount">
           <DataField>Line_Extension_Amount</DataField>
         </Field>
-        <Field Name="Line_Extension_AmountFormat">
-          <DataField>Line_Extension_AmountFormat</DataField>
-        </Field>
         <Field Name="Tax_Inclusive_Amount">
           <DataField>Tax_Inclusive_Amount</DataField>
-        </Field>
-        <Field Name="Tax_Inclusive_AmountFormat">
-          <DataField>Tax_Inclusive_AmountFormat</DataField>
         </Field>
         <Field Name="Customer_Label">
           <DataField>Customer_Label</DataField>
@@ -2076,44 +1999,23 @@
         <Field Name="Line_No">
           <DataField>Line_No</DataField>
         </Field>
-        <Field Name="Type">
-          <DataField>Type</DataField>
-        </Field>
-        <Field Name="No">
-          <DataField>No</DataField>
-        </Field>
         <Field Name="Description">
           <DataField>Description</DataField>
         </Field>
         <Field Name="Quantity">
           <DataField>Quantity</DataField>
         </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
         <Field Name="Unit_Price">
           <DataField>Unit_Price</DataField>
-        </Field>
-        <Field Name="Unit_PriceFormat">
-          <DataField>Unit_PriceFormat</DataField>
         </Field>
         <Field Name="Line_Amount">
           <DataField>Line_Amount</DataField>
         </Field>
-        <Field Name="Line_AmountFormat">
-          <DataField>Line_AmountFormat</DataField>
-        </Field>
         <Field Name="Line_Discount_Amount">
           <DataField>Line_Discount_Amount</DataField>
         </Field>
-        <Field Name="Line_Discount_AmountFormat">
-          <DataField>Line_Discount_AmountFormat</DataField>
-        </Field>
         <Field Name="Line_Discount_Percent">
           <DataField>Line_Discount_Percent</DataField>
-        </Field>
-        <Field Name="Line_Discount_PercentFormat">
-          <DataField>Line_Discount_PercentFormat</DataField>
         </Field>
         <Field Name="Line_Note">
           <DataField>Line_Note</DataField>

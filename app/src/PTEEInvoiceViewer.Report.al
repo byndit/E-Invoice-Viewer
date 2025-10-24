@@ -7,50 +7,39 @@ report 50600 "PTE E-Invoice Viewer"
 
     dataset
     {
-        dataitem(TempSalesHeader; "Sales Header")
+        dataitem(TempEInvoiceHeader; "PTE E-Invoice Header")
         {
             UseTemporary = true;
-            DataItemTableView = sorting("No.") where("Document Type" = const(Invoice));
             column(Header_No; "No.") { IncludeCaption = true; }
             column(Header_Sell_to_Customer_No; "Sell-to Customer No.") { }
-            //Sell to Name
             column(Header_Sell_to_Name; "Sell-to Customer Name") { }
-            //Sell to Address
             column(Header_Sell_to_Address; "Sell-to Address") { }
-            //Sell to City
             column(Header_Sell_to_City; "Sell-to City") { }
-            //Sell to Post Code
             column(Header_Sell_to_Post_Code; "Sell-to Post Code") { }
-            //Bill to Name
             column(Header_Bill_to_Name; "Bill-to Name") { }
-            //Bill to Address
             column(Header_Bill_to_Address; "Bill-to Address") { }
-            //Bill to City
             column(Header_Bill_to_City; "Bill-to City") { }
-            //Bill to Post Code
             column(Header_Bill_to_Post_Code; "Bill-to Post Code") { }
-
-            column(Header_Bill_to_Customer_No; "Bill-to Customer No.") { }
             column(Header_Posting_Date_Value; Format("Posting Date")) { }
             column(Header_Document_Date_Value; Format("Document Date")) { }
             column(Header_Posting_Date; "Posting Date") { IncludeCaption = true; }
             column(Header_Document_Date; "Document Date") { IncludeCaption = true; }
             column(Header_Currency_Code; "Currency Code") { IncludeCaption = true; }
-            column(Header_Payment_Terms_Code; PaymentTerms) { }
-            column(Amount; TaxExclusiveAmount) { }
-            column(TaxAmount; TaxAmount) { }
-            column(Amount_Including_VAT; TotalAmount) { }
-            column(Amount_Excluding_VAT; TaxExclusiveAmount) { }
-            column(Buyer_Reference; BuyerReference) { }
-            column(Invoice_Note; Note) { }
-            column(Invoice_Type_Code; InvoiceTypeCode) { }
-            column(Contact_Name; ContactName) { }
-            column(Contact_Phone; ContactPhone) { }
-            column(Contact_Email; ContactEmail) { }
-            column(Payment_Means_Code; PaymentMeansCode) { }
-            column(Payment_Account; PaymentAccount) { }
-            column(Line_Extension_Amount; LineExtensionAmount) { }
-            column(Tax_Inclusive_Amount; TaxInclusiveAmount) { }
+            column(Header_Payment_Terms_Code; "Payment Terms Code") { }
+            column(Amount; "Tax Exclusive Amount") { }
+            column(TaxAmount; "VAT Amount") { }
+            column(Amount_Including_VAT; "Tax Inclusive Amount") { }
+            column(Amount_Excluding_VAT; "Tax Exclusive Amount") { }
+            column(Buyer_Reference; "Buyer Reference") { }
+            column(Invoice_Note; "Note") { }
+            column(Invoice_Type_Code; "Invoice Type Code") { }
+            column(Contact_Name; "Contact Name") { }
+            column(Contact_Phone; "Contact Phone") { }
+            column(Contact_Email; "Contact Email") { }
+            column(Payment_Means_Code; "Payment Means Code") { }
+            column(Payment_Account; "Payment Account") { }
+            column(Line_Extension_Amount; "Line Extension Amount") { }
+            column(Tax_Inclusive_Amount; "Tax Inclusive Amount") { }
             //CustomerLbl
             column(Customer_Label; CustomerLbl) { }
             //SupplierLbl
@@ -61,45 +50,43 @@ report 50600 "PTE E-Invoice Viewer"
             column(Amount_Incl_VAT_Label; AmountInclVATLbl) { }
             //VATAmountLbl
             column(VAT_Amount_Label; VATAmountLbl) { }
-            dataitem(TempSalesLine; "Sales Line")
+            dataitem(TempEInvoiceLine; "PTE E-Invoice Line")
             {
                 UseTemporary = true;
-                DataItemLinkReference = TempSalesHeader;
-                DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
-                DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
+                DataItemLinkReference = TempEInvoiceHeader;
+                DataItemTableView = sorting("Document No.", "Line No.");
+                DataItemLink = "Document No." = field("No.");
                 column(Document_No; "Document No.") { IncludeCaption = true; }
                 column(Line_No; "Line No.") { IncludeCaption = true; }
-                column(Type; Type) { IncludeCaption = true; }
-                column(No; "No.") { IncludeCaption = true; }
                 column(Description; Description) { IncludeCaption = true; }
                 column(Quantity; Quantity)
                 {
                     IncludeCaption = true;
-                    AutoFormatExpression = TempSalesHeader."Currency Code";
+                    AutoFormatExpression = TempEInvoiceHeader."Currency Code";
                     AutoFormatType = 1;
                 }
                 column(Unit_Price; "Unit Price")
                 {
                     IncludeCaption = true;
-                    AutoFormatExpression = TempSalesHeader."Currency Code";
+                    AutoFormatExpression = TempEInvoiceHeader."Currency Code";
                     AutoFormatType = 1;
                 }
                 column(Line_Amount; "Line Amount")
                 {
                     IncludeCaption = true;
-                    AutoFormatExpression = TempSalesHeader."Currency Code";
+                    AutoFormatExpression = TempEInvoiceHeader."Currency Code";
                     AutoFormatType = 1;
                 }
                 column(Line_Discount_Amount; "Line Discount Amount")
                 {
                     IncludeCaption = true;
-                    AutoFormatExpression = TempSalesHeader."Currency Code";
+                    AutoFormatExpression = TempEInvoiceHeader."Currency Code";
                     AutoFormatType = 1;
                 }
                 column(Line_Discount_Percent; "Line Discount %")
                 {
                     IncludeCaption = true;
-                    AutoFormatExpression = TempSalesHeader."Currency Code";
+                    AutoFormatExpression = TempEInvoiceHeader."Currency Code";
                     AutoFormatType = 1;
                 }
                 column(Line_Note; LineNote) { }
@@ -151,9 +138,9 @@ report 50600 "PTE E-Invoice Viewer"
         TempBlob: Codeunit "Temp Blob";
         CurrencyCode: Code[10];
         IssueDate: Date;
-        TaxAmount: Decimal;
-        TaxExclusiveAmount: Decimal;
-        TotalAmount: Decimal;
+        TaxAmount: Text;
+        TaxExclusiveAmount: Text;
+        TotalAmount: Text;
         InStr: InStream;
         LineNo: Integer;
         AmountExclVATLbl: Label 'Amount Excluding VAT';
@@ -182,8 +169,8 @@ report 50600 "PTE E-Invoice Viewer"
         ContactEmail: Text;
         PaymentMeansCode: Text;
         PaymentAccount: Text;
-        LineExtensionAmount: Decimal;
-        TaxInclusiveAmount: Decimal;
+        LineExtensionAmount: Text;
+        TaxInclusiveAmount: Text;
         LineNote: Text;
         StartDate: Date;
         EndDate: Date;
@@ -198,11 +185,11 @@ report 50600 "PTE E-Invoice Viewer"
     procedure LoadRecords(var InStr: InStream)
     var
         TypeHelper: Codeunit "Type Helper";
-        DiscountAmount: Decimal;
-        DiscountPercent: Decimal;
-        LineAmount: Decimal;
-        PriceAmount: Decimal;
-        Quantity: Decimal;
+        DiscountAmount: Text;
+        DiscountPercent: Text;
+        LineAmount: Text;
+        PriceAmount: Text;
+        Quantity: Text;
         ItemName: Text;
         LineId: Text;
         XmlText: Text;
@@ -217,6 +204,7 @@ report 50600 "PTE E-Invoice Viewer"
 
         // Set up namespace manager
         NamespaceManager.NameTable(XmlDoc.NameTable());
+        NamespaceManager.AddNamespace('', 'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2'); // Default namespace for credit notes
         NamespaceManager.AddNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
         NamespaceManager.AddNamespace('cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2');
 
@@ -227,6 +215,8 @@ report 50600 "PTE E-Invoice Viewer"
         BuyerReference := GetXmlValue(RootElement, 'cbc:BuyerReference', NamespaceManager);
         Note := GetXmlValue(RootElement, 'cbc:Note', NamespaceManager);
         InvoiceTypeCode := GetXmlValue(RootElement, 'cbc:InvoiceTypeCode', NamespaceManager);
+        if InvoiceTypeCode = '' then
+            InvoiceTypeCode := GetXmlValue(RootElement, 'cbc:CreditNoteTypeCode', NamespaceManager); // For credit notes
 
         // Supplier
         SupplierName := GetXmlValue(RootElement, 'cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name', NamespaceManager);
@@ -251,44 +241,64 @@ report 50600 "PTE E-Invoice Viewer"
         PaymentTerms := GetXmlValue(RootElement, 'cac:PaymentTerms/cbc:Note', NamespaceManager);
 
         // Totals
-        LineExtensionAmount := GetXmlDecimalValue(RootElement, 'cac:LegalMonetaryTotal/cbc:LineExtensionAmount', NamespaceManager);
-        TaxExclusiveAmount := GetXmlDecimalValue(RootElement, 'cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', NamespaceManager);
-        TaxInclusiveAmount := GetXmlDecimalValue(RootElement, 'cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', NamespaceManager);
-        TaxAmount := GetXmlDecimalValue(RootElement, 'cac:TaxTotal/cbc:TaxAmount', NamespaceManager);
-        TotalAmount := GetXmlDecimalValue(RootElement, 'cac:LegalMonetaryTotal/cbc:PayableAmount', NamespaceManager);
+        LineExtensionAmount := GetXmlValue(RootElement, 'cac:LegalMonetaryTotal/cbc:LineExtensionAmount', NamespaceManager);
+        TaxExclusiveAmount := GetXmlValue(RootElement, 'cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', NamespaceManager);
+        TaxInclusiveAmount := GetXmlValue(RootElement, 'cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', NamespaceManager);
+        TaxAmount := GetXmlValue(RootElement, 'cac:TaxTotal/cbc:TaxAmount', NamespaceManager);
+        TotalAmount := GetXmlValue(RootElement, 'cac:LegalMonetaryTotal/cbc:PayableAmount', NamespaceManager);
 
-        // Fill Temp Sales Header
-        TempSalesHeader.Init();
-        TempSalesHeader."Document Type" := TempSalesHeader."Document Type"::Invoice;
-        TempSalesHeader."No." := CopyStr(InvoiceId, 1, 20);
-        TempSalesHeader."Sell-to Customer Name" := CopyStr(CustomerName, 1, 100);
-        TempSalesHeader."Sell-to Address" := CopyStr(CustomerAddress, 1, 100);
-        TempSalesHeader."Sell-to City" := CopyStr(CustomerCity, 1, 30);
-        TempSalesHeader."Sell-to Post Code" := CopyStr(CustomerPostalZone, 1, 20);
-        TempSalesHeader."Bill-to Name" := CopyStr(SupplierName, 1, 100);
-        TempSalesHeader."Bill-to Address" := CopyStr(SupplierAddress, 1, 100);
-        TempSalesHeader."Bill-to City" := CopyStr(SupplierCity, 1, 30);
-        TempSalesHeader."Bill-to Post Code" := CopyStr(SupplierPostalZone, 1, 20);
-        TempSalesHeader."Payment Terms Code" := CopyStr(PaymentTerms, 1, 10);
-        TempSalesHeader."Posting Date" := IssueDate;
-        TempSalesHeader."Document Date" := IssueDate;
-        TempSalesHeader."Currency Code" := CurrencyCode;
-        TempSalesHeader.Insert();
+        // Fill Temp E-Invoice Header
+        TempEInvoiceHeader.Init();
+        TempEInvoiceHeader."No." := CopyStr(InvoiceId, 1, 20);
+        TempEInvoiceHeader."Sell-to Customer Name" := CopyStr(CustomerName, 1, 100);
+        TempEInvoiceHeader."Sell-to Address" := CopyStr(CustomerAddress, 1, 100);
+        TempEInvoiceHeader."Sell-to City" := CopyStr(CustomerCity, 1, 30);
+        TempEInvoiceHeader."Sell-to Post Code" := CopyStr(CustomerPostalZone, 1, 20);
+        TempEInvoiceHeader."Bill-to Name" := CopyStr(SupplierName, 1, 100);
+        TempEInvoiceHeader."Bill-to Address" := CopyStr(SupplierAddress, 1, 100);
+        TempEInvoiceHeader."Bill-to City" := CopyStr(SupplierCity, 1, 30);
+        TempEInvoiceHeader."Bill-to Post Code" := CopyStr(SupplierPostalZone, 1, 20);
+        TempEInvoiceHeader."Payment Terms Code" := CopyStr(PaymentTerms, 1, 10);
+        TempEInvoiceHeader."Posting Date" := IssueDate;
+        TempEInvoiceHeader."Document Date" := IssueDate;
+        TempEInvoiceHeader."Currency Code" := CurrencyCode;
+        TempEInvoiceHeader."Buyer Reference" := BuyerReference;
+        TempEInvoiceHeader."Note" := Note;
+        TempEInvoiceHeader."Invoice Type Code" := InvoiceTypeCode;
+        TempEInvoiceHeader."Contact Name" := ContactName;
+        TempEInvoiceHeader."Contact Phone" := ContactPhone;
+        TempEInvoiceHeader."Contact Email" := ContactEmail;
+        TempEInvoiceHeader."Payment Means Code" := PaymentMeansCode;
+        TempEInvoiceHeader."Payment Account" := PaymentAccount;
+        TempEInvoiceHeader."Line Extension Amount" := LineExtensionAmount;
+        TempEInvoiceHeader."Tax Exclusive Amount" := TaxExclusiveAmount;
+        TempEInvoiceHeader."Tax Inclusive Amount" := TaxInclusiveAmount;
+        TempEInvoiceHeader."VAT Amount" := TaxAmount;
+        TempEInvoiceHeader."Payable Amount" := TotalAmount;
+        TempEInvoiceHeader.Amount := TaxExclusiveAmount;
+        TempEInvoiceHeader."Amount Including VAT" := TaxInclusiveAmount;
+        TempEInvoiceHeader.Insert();
 
         // Additional header fields (stored in TempSalesHeader for display)
         // Note: Since TempSalesHeader doesn't have fields for these, we'll use existing fields or add custom logic in RDLC
 
-        // Parse invoice lines
+        // Parse invoice lines - try InvoiceLine first, then CreditNoteLine for credit notes
         RootElement.SelectNodes('cac:InvoiceLine', NamespaceManager, InvoiceLines);
+        if InvoiceLines.Count() = 0 then
+            RootElement.SelectNodes('cac:CreditNoteLine', NamespaceManager, InvoiceLines);
+
         LineNo := 10000;
         foreach InvoiceLineNode in InvoiceLines do begin
             InvoiceLine := InvoiceLineNode.AsXmlElement();
             LineId := GetXmlValue(InvoiceLine, 'cbc:ID', NamespaceManager);
-            Quantity := GetXmlDecimalValue(InvoiceLine, 'cbc:InvoicedQuantity', NamespaceManager);
-            LineAmount := GetXmlDecimalValue(InvoiceLine, 'cbc:LineExtensionAmount', NamespaceManager);
+            Quantity := GetXmlValue(InvoiceLine, 'cbc:InvoicedQuantity', NamespaceManager);
+            if Quantity in [''] then
+                Quantity := GetXmlValue(InvoiceLine, 'cbc:CreditedQuantity', NamespaceManager); // For credit notes
+
+            LineAmount := GetXmlValue(InvoiceLine, 'cbc:LineExtensionAmount', NamespaceManager);
             ItemName := GetXmlValue(InvoiceLine, 'cac:Item/cbc:Name', NamespaceManager);
-            DiscountAmount := GetXmlDecimalValue(InvoiceLine, 'cac:AllowanceCharge/cbc:Amount', NamespaceManager);
-            PriceAmount := GetXmlDecimalValue(InvoiceLine, 'cac:Price/cbc:PriceAmount', NamespaceManager);
+            DiscountAmount := GetXmlValue(InvoiceLine, 'cac:AllowanceCharge/cbc:Amount', NamespaceManager);
+            PriceAmount := GetXmlValue(InvoiceLine, 'cac:Price/cbc:PriceAmount', NamespaceManager);
 
             // Additional line fields
             LineNote := GetXmlValue(InvoiceLine, 'cbc:Note', NamespaceManager);
@@ -300,26 +310,26 @@ report 50600 "PTE E-Invoice Viewer"
             LineTaxCategory := GetXmlValue(InvoiceLine, 'cac:ClassifiedTaxCategory/cbc:ID', NamespaceManager);
             LineTaxPercent := GetXmlValue(InvoiceLine, 'cac:ClassifiedTaxCategory/cbc:Percent', NamespaceManager);
 
-            // Calculate discount %
-            if PriceAmount <> 0 then
-                DiscountPercent := (DiscountAmount / PriceAmount) * 100
-            else
-                DiscountPercent := 0;
-
-            // Fill Temp Sales Line
-            TempSalesLine.Init();
-            TempSalesLine."Document Type" := TempSalesLine."Document Type"::Invoice;
-            TempSalesLine."Document No." := CopyStr(InvoiceId, 1, 20);
-            TempSalesLine."Line No." := LineNo;
-            TempSalesLine.Type := TempSalesLine.Type::Item;
-            TempSalesLine."No." := CopyStr(LineId, 1, 20); // Assuming line ID as item no
-            TempSalesLine.Description := CopyStr(ItemName, 1, 100);
-            TempSalesLine.Quantity := Quantity;
-            TempSalesLine."Unit Price" := PriceAmount;
-            TempSalesLine."Line Amount" := LineAmount;
-            TempSalesLine."Line Discount Amount" := DiscountAmount;
-            TempSalesLine."Line Discount %" := DiscountPercent;
-            TempSalesLine.Insert();
+            // Fill Temp E-Invoice Line
+            TempEInvoiceLine.Init();
+            TempEInvoiceLine."Document No." := CopyStr(InvoiceId, 1, 50);
+            TempEInvoiceLine."Line No." := LineNo;
+            TempEInvoiceLine.Description := CopyStr(ItemName, 1, 100);
+            TempEInvoiceLine.Quantity := Quantity;
+            TempEInvoiceLine."Unit Price" := PriceAmount;
+            TempEInvoiceLine."Line Amount" := LineAmount;
+            TempEInvoiceLine."Line Discount Amount" := DiscountAmount;
+            TempEInvoiceLine."Line Discount %" := DiscountPercent;
+            TempEInvoiceLine."Line Note" := LineNote;
+            TempEInvoiceLine."Start Date" := StartDate;
+            TempEInvoiceLine."End Date" := EndDate;
+            TempEInvoiceLine."Order Line ID" := OrderLineID;
+            TempEInvoiceLine."Seller Item ID" := SellerItemID;
+            TempEInvoiceLine."Commodity Code" := CommodityCode;
+            TempEInvoiceLine."Line Tax Category" := LineTaxCategory;
+            TempEInvoiceLine."Line Tax Percent" := LineTaxPercent;
+            // TempEInvoiceLine."Item Description" := ItemDescription; // Variable not defined, will be added later if needed
+            TempEInvoiceLine.Insert();
 
             LineNo += 10000;
         end;
