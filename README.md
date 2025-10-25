@@ -1,11 +1,11 @@
 # E-Invoice Viewer
 
-This project provides a comprehensive solution for viewing and processing electronic invoices in UBL (Universal Business Language) XML format. It includes both a Python script for standalone PDF generation and a Business Central AL extension for integrated invoice viewing.
+This project provides a comprehensive solution for viewing invoices XRechnung XML format. It includes both a Python script for standalone PDF generation and a Business Central AL extension for integrated invoice viewing.
 
 ## Features
 
 ### Python Script (`xml_to_invoice_pdf.py`)
-- Parses UBL XML invoice files
+- Parses XML invoice files
 - Generates PDF invoices with detailed formatting
 - Supports comprehensive invoice data extraction including:
   - Header information (ID, dates, currency, buyer reference, notes, type code)
@@ -34,7 +34,13 @@ pip install reportlab
 2. Publish and install the extension
 3. The report will be available under Reports and Analysis
 
+See how the business central integration works:
+![See how the business central integration works](E-Invoice.gif)
+
+
 ## Usage
+See how a xml invoice could look like:
+![See how a xml invoice could look like](image.png)
 
 ### Python Script
 ```bash
@@ -51,9 +57,18 @@ python xml_to_invoice_pdf.py 01.01a-INVOICE_ubl.xml invoice.pdf
 2. Select an XML file when prompted
 3. The report will automatically parse and display the invoice data
 
+Use incoming documents to validate the xrechnung xml file:
+![Use incoming documents to validate the xrechnung xml file](image-1.png)
+
+After loading the xml file, our extension generates the pdf file for better visualization:
+![After loading the xml file, our extension generates the pdf file for better visualization](image-2.png)
+
+And now the preview of the pdf file in Business Central:
+![And now the preview of the pdf file in Business Central](image-4.png)
+
 ## XML Structure Support
 
-The solution supports the following UBL 2.1 invoice elements:
+The solution supports the following invoice elements:
 
 ### Header Elements
 - `cbc:ID` - Invoice number
